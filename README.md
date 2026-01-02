@@ -231,3 +231,5 @@ If you encounter issues:
 ---
 
 **Made with Python and discord.py** 🐍
+#   D - s e r v e r - s t u f f  
+ 
