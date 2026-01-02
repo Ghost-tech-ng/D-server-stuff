@@ -7,6 +7,7 @@ Includes auto-disable timer feature.
 import discord
 from discord.ext import commands
 import asyncio
+import os
 from datetime import datetime
 
 # Import local modules
@@ -72,6 +73,11 @@ async def on_ready():
     
     # Initialize and start timer
     timer_manager = TimerManager(Config.TIMER_HOURS, bot, data_manager, reporter)
+    
+    # Start health server for Render/UptimeRobot
+    from health_server import HealthServer
+    health_server = HealthServer(port=int(os.getenv('PORT', 8080)))
+    await health_server.start()
     
     log("="*60)
     log_success("Listening for member joins across all servers...")
