@@ -1,0 +1,46 @@
+{
+  "server_name": "Example Discord Server",
+  "server_id": "123456789012345678",
+  "tracked_joins": [
+    {
+      "username": "alice_wonder",
+      "user_id": "987654321098765432",
+      "discriminator": "1234",
+      "joined_at": "2026-01-02T14:30:00.123456+00:00",
+      "account_created": "2020-05-15T08:22:00+00:00",
+      "has_avatar": true
+    },
+    {
+      "username": "bob_builder",
+      "user_id": "876543210987654321",
+      "discriminator": "5678",
+      "joined_at": "2026-01-02T15:45:12.654321+00:00",
+      "account_created": "2021-03-20T12:10:00+00:00",
+      "has_avatar": true
+    },
+    {
+      "username": "charlie_brown",
+      "user_id": "765432109876543210",
+      "discriminator": "9012",
+      "joined_at": "2026-01-02T16:20:33.987654+00:00",
+      "account_created": "2019-11-08T19:45:00+00:00",
+      "has_avatar": false
+    },
+    {
+      "username": "diana_prince",
+      "user_id": "654321098765432109",
+      "discriminator": "3456",
+      "joined_at": "2026-01-02T17:05:44.456789+00:00",
+      "account_created": "2022-01-01T00:00:00+00:00",
+      "has_avatar": true
+    },
+    {
+      "username": "eve_online",
+      "user_id": "543210987654321098",
+      "discriminator": "7890",
+      "joined_at": "2026-01-02T18:15:55.321098+00:00",
+      "account_created": "2018-07-14T16:30:00+00:00",
+      "has_avatar": false
+    }
+  ]
+}
