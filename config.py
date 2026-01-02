@@ -23,6 +23,10 @@ class Config:
     REPORT_CHANNEL_ID = os.getenv('REPORT_CHANNEL_ID')
     ADMIN_USER_ID = os.getenv('ADMIN_USER_ID')
     
+    # Telegram integration (optional)
+    TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
+    TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+    
     @classmethod
     def validate(cls):
         """Validate required configuration and return error messages if any."""

@@ -87,14 +87,26 @@ class TimerManager:
             else:
                 log_warning(f"[{server_dm.server_name}] Failed to save data to file")
         
-        # Step 2: Send final report if reporter is configured
+        # Step 2: Send files to Telegram if configured
+        from config import Config
+        if Config.TELEGRAM_BOT_TOKEN and Config.TELEGRAM_CHAT_ID:
+            try:
+                from telegram_sender import TelegramSender
+                log("📱 Sending data files to Telegram...")
+                telegram = TelegramSender(Config.TELEGRAM_BOT_TOKEN, Config.TELEGRAM_CHAT_ID)
+                await telegram.send_all_data_files(self.data_manager)
+                log_success("All files sent to Telegram successfully!")
+            except Exception as e:
+                log_warning(f"Failed to send files to Telegram: {e}")
+        
+        # Step 3: Send final report to Discord if reporter is configured
         if self.reporter:
             try:
                 await self.reporter.send_final_report(reason)
             except Exception as e:
                 log_warning(f"Failed to send final report: {e}")
         
-        # Step 3: Disconnect from Discord
+        # Step 4: Disconnect from Discord
         log("Disconnecting from Discord...")
         await self.bot.close()
         log_success("Bot disconnected successfully")
