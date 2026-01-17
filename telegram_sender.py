@@ -85,6 +85,25 @@ class TelegramSender:
             log_error(f"Error sending file to Telegram: {e}")
             return False
     
+    async def send_member_join_notification(self, member, server_name):
+        """
+        Send instant notification when a member joins.
+        
+        Args:
+            member: Discord Member object
+            server_name: Name of the server
+        """
+        # Format member join message
+        message = f"🆕 *New Member Joined!*\n\n"
+        message += f"👤 *Username:* {member.name}#{member.discriminator}\n"
+        message += f"🆔 *User ID:* `{member.id}`\n"
+        message += f"🖥️ *Server:* {server_name}\n"
+        message += f"📅 *Joined:* {member.joined_at.strftime('%Y-%m-%d %H:%M:%S UTC') if member.joined_at else 'Unknown'}\n"
+        message += f"🎂 *Account Created:* {member.created_at.strftime('%Y-%m-%d')}\n"
+        message += f"🖼️ *Has Avatar:* {'Yes ✅' if member.avatar else 'No ❌'}"
+        
+        await self.send_message(message)
+    
     async def send_all_data_files(self, data_manager):
         """
         Send all server data files to Telegram.

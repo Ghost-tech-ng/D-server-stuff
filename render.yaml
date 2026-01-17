@@ -1,13 +1,18 @@
 services:
-  - type: worker
-    name: discord-member-tracker
+  - type: web
+    name: discord-selfbot-tracker
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: python bot.py
     envVars:
-      - key: DISCORD_BOT_TOKEN
+      - key: DISCORD_USER_TOKEN
         sync: false
-      - key: TIMER_HOURS
-        value: "24"
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_CHAT_ID
+        sync: false
       - key: OUTPUT_FILE
         value: "join_logs"
+      - key: PORT
+        value: "8080"
+

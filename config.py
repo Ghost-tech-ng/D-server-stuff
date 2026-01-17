@@ -1,6 +1,8 @@
 """
-Configuration loader for Discord Member Tracking Bot.
+Configuration loader for Discord Member Tracking Self-Bot.
 Loads and validates environment variables with sensible defaults.
+
+⚠️ WARNING: This is configured for self-bot (user account) usage.
 """
 
 import os
@@ -10,20 +12,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    """Bot configuration with validation."""
+    """Self-bot configuration with validation."""
     
-    # Required configuration
-    DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
+    # Required configuration - USER TOKEN (not bot token!)
+    DISCORD_USER_TOKEN = os.getenv('DISCORD_USER_TOKEN')
     
     # Optional configuration with defaults
-    TIMER_HOURS = float(os.getenv('TIMER_HOURS', '24'))
-    OUTPUT_FILE = os.getenv('OUTPUT_FILE', 'join_logs.json')
+    OUTPUT_FILE = os.getenv('OUTPUT_FILE', 'join_logs')
     
     # Optional IDs (can be None)
     REPORT_CHANNEL_ID = os.getenv('REPORT_CHANNEL_ID')
     ADMIN_USER_ID = os.getenv('ADMIN_USER_ID')
     
-    # Telegram integration (optional)
+    # Telegram integration (required for real-time notifications)
     TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
     TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
     
@@ -32,13 +33,16 @@ class Config:
         """Validate required configuration and return error messages if any."""
         errors = []
         
-        if not cls.DISCORD_BOT_TOKEN:
-            errors.append("❌ DISCORD_BOT_TOKEN is required but not set!")
-            errors.append("   → Get your token from: https://discord.com/developers/applications")
-            errors.append("   → Create a .env file based on .env.example")
-        
-        if cls.TIMER_HOURS <= 0:
-            errors.append(f"❌ TIMER_HOURS must be positive (got: {cls.TIMER_HOURS})")
+        if not cls.DISCORD_USER_TOKEN:
+            errors.append("❌ DISCORD_USER_TOKEN is required but not set!")
+            errors.append("   ⚠️  WARNING: You need a USER token, not a bot token!")
+            errors.append("   → How to get your user token:")
+            errors.append("   → 1. Open Discord in your web browser")
+            errors.append("   → 2. Press F12 to open Developer Tools")
+            errors.append("   → 3. Go to 'Network' tab and press F5 to reload")
+            errors.append("   → 4. Look for any request and check the 'Authorization' header")
+            errors.append("   → 5. Copy the token and add it to your .env file")
+            errors.append("   → Create a .env file based on .env.sample")
         
         # Convert string IDs to integers if provided
         if cls.REPORT_CHANNEL_ID:
@@ -65,3 +69,4 @@ if validation_errors:
         print(error)
     print("="*60 + "\n")
     exit(1)
+
