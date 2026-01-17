@@ -1,0 +1,31 @@
+﻿python : [2026-01-17 18:24:37] 
+[INFO    ] discord.client: 
+logging in using static token
+At line:1 char:1
++ python bot.py 2>&1 | Out-File 
+-Encoding UTF8 bot_output.txt
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : No 
+   tSpecified: ([2026-01-17 18:  
+  ...ng static token:String) [   
+ ], RemoteException
+    + FullyQualifiedErrorId : Na 
+   tiveCommandError
+ 
+[2026-01-17 18:24:37] ============================================================
+[2026-01-17 18:24:37] Discord Member Tracking Self-Bot
+[2026-01-17 18:24:37] ============================================================
+[2026-01-17 18:24:37] ΓÜá∩╕Å  WARNING: ΓÜá∩╕Å  WARNING: Self-bots violate Discord ToS!
+[2026-01-17 18:24:37] ΓÜá∩╕Å  WARNING: ΓÜá∩╕Å  Your account may be banned!
+[2026-01-17 18:24:37] ============================================================
+[2026-01-17 18:24:37] Self-bot initializing...
+[2026-01-17 18:24:38] Γ¥î ERROR: Invalid user token!
+[2026-01-17 18:24:38] Please check your DISCORD_USER_TOKEN in the .env file
+[2026-01-17 18:24:38] 
+How to get your user token:
+[2026-01-17 18:24:38] 1. Open Discord in your web browser
+[2026-01-17 18:24:38] 2. Press F12 to open Developer Tools
+[2026-01-17 18:24:38] 3. Go to 'Network' tab
+[2026-01-17 18:24:38] 4. Press F5 to reload
+[2026-01-17 18:24:38] 5. Look for any request and check the 'Authorization' header
+[2026-01-17 18:24:38] 6. Copy the token (it's a long string)
