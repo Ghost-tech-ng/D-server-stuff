@@ -22,7 +22,6 @@ from reporter import Reporter
 # Bot setup with required intents for self-bot
 intents = discord.Intents.default()
 intents.members = True  # Required to detect member joins
-intents.message_content = True  # For commands
 
 # Create self-bot client
 bot = commands.Bot(
