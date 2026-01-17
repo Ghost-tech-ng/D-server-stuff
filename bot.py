@@ -226,8 +226,8 @@ def main():
     
     try:
         # Start the self-bot with user token
-        # bot=False is CRUCIAL - tells discord.py this is a user token, not a bot token
-        bot.run(Config.DISCORD_USER_TOKEN, bot=False)
+        # self_bot=True in the Bot constructor is sufficient
+        bot.run(Config.DISCORD_USER_TOKEN)
     except discord.LoginFailure:
         log_error("Invalid user token!")
         log("Please check your DISCORD_USER_TOKEN in the .env file")
